@@ -27,10 +27,13 @@
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
   <component name="GradleLocalSettings">
     <option name="modificationStamps">
       <map>
-        <entry key="$USER_HOME$/gitPublic/ThoughtWorks-fix-assets-management" value="5721924422000" />
+        <entry key="$PROJECT_DIR$/../ThoughtWorks-fix-assets-management" value="5721924422000" />
       </map>
     </option>
   </component>

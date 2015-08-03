@@ -41,5 +41,8 @@ public class BibliotecaAppTest {
         assertThat(bibliotecaApp.getBookList(), hasItem(book1));
         assertThat(bibliotecaApp.getBookList(), not(hasItem(book3)));
         assertEquals(book2, bibliotecaApp.getBookList().get(1));
+
+        String detail = "Test-Driven Development" + "\t" + "Kent" + "\t" + "2002";
+        assertEquals(detail, bibliotecaApp.getBookList().get(0).showDetail());
     }
 }

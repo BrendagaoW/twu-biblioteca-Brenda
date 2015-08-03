@@ -3,8 +3,17 @@ package com.twu.biblioteca;
 public class Book {
 
     private String title;
+    private String author;
+    private int year;
+
     public Book(String title) {
         this.title = title;
+    }
+
+    public Book(String title, String author, int year) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
     }
 
     @Override
@@ -22,5 +31,9 @@ public class Book {
     @Override
     public int hashCode() {
         return title.hashCode();
+    }
+
+    public String showDetail() {
+        return title + "\t" + author + "\t" + year;
     }
 }

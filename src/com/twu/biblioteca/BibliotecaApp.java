@@ -24,8 +24,8 @@ public class BibliotecaApp {
 
     public List<Book> getBookList() {
         List<Book> bookList = new ArrayList<Book>();
-        bookList.add(new Book("Test-Driven Development"));
-        bookList.add(new Book("Code Smell"));
+        bookList.add(new Book("Test-Driven Development", "Kent", 2002));
+        bookList.add(new Book("Code Smell", "Anybody", 2010));
 
         return bookList;
     }

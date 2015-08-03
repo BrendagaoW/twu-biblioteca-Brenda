@@ -29,4 +29,8 @@ public class BibliotecaApp {
 
         return bookList;
     }
+
+    public void showMenu() {
+        printStream.println("List Books");
+    }
 }

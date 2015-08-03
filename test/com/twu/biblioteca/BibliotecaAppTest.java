@@ -45,4 +45,11 @@ public class BibliotecaAppTest {
         String detail = "Test-Driven Development" + "\t" + "Kent" + "\t" + "2002";
         assertEquals(detail, bibliotecaApp.getBookList().get(0).showDetail());
     }
+
+    @Test
+    public void shouldShowMenu() throws Exception {
+        bibliotecaApp.showMenu();
+        verify(printStream).println("List Books");
+
+    }
 }

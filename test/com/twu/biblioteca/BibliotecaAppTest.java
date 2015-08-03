@@ -53,11 +53,22 @@ public class BibliotecaAppTest {
     public void shouldShowMenu() throws Exception {
         bibliotecaApp.showMenu();
         verify(printStream).println("List Books");
+    }
 
+    @Test
+    public void shouldShowValidOption() throws Exception {
         String answerString = "l";
         when(reader.readLine()).thenReturn(answerString);
         bibliotecaApp.showMenu();
         verify(printStream).println("Select a valid option!");
-
     }
+
+    @Test
+    public void shouldShowInvalidOption() throws Exception {
+        when(reader.readLine()).thenReturn("k");
+        bibliotecaApp.showMenu();
+        verify(printStream).println("List Books");
+    }
+
+
 }

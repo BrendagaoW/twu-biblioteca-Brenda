@@ -44,11 +44,13 @@ public class BibliotecaApp {
         printStream.println("List Books");
 
         try {
-            if ((reader.readLine()) != null) {
+            if ((reader.readLine()) == "l") {
                 printStream.println("Select a valid option!");
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 }

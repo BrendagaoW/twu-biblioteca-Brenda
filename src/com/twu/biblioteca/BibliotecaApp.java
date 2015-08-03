@@ -1,6 +1,10 @@
 package com.twu.biblioteca;
 
+import org.mockito.internal.matchers.Null;
+
 import java.awt.print.*;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +12,12 @@ import java.util.List;
 public class BibliotecaApp {
 
     private PrintStream printStream;
+    private BufferedReader reader;
+
+    public BibliotecaApp(PrintStream printStream, BufferedReader reader) {
+        this.printStream = printStream;
+        this.reader = reader;
+    }
 
     public BibliotecaApp(PrintStream printStream) {
         this.printStream = printStream;
@@ -32,5 +42,13 @@ public class BibliotecaApp {
 
     public void showMenu() {
         printStream.println("List Books");
+
+        try {
+            if ((reader.readLine()) != null) {
+                printStream.println("Select a valid option!");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

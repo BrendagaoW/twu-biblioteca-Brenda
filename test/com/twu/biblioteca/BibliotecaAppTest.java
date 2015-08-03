@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.BufferedReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +18,13 @@ public class BibliotecaAppTest {
 
     private PrintStream printStream;
     private BibliotecaApp bibliotecaApp;
+    private BufferedReader reader;
 
     @Before
     public void setUp() throws Exception {
         printStream = mock(PrintStream.class);
-        bibliotecaApp = new BibliotecaApp(printStream);
+        reader = mock(BufferedReader.class);
+        bibliotecaApp = new BibliotecaApp(printStream, reader);
     }
 
     @Test
@@ -50,6 +53,11 @@ public class BibliotecaAppTest {
     public void shouldShowMenu() throws Exception {
         bibliotecaApp.showMenu();
         verify(printStream).println("List Books");
+
+        String answerString = "l";
+        when(reader.readLine()).thenReturn(answerString);
+        bibliotecaApp.showMenu();
+        verify(printStream).println("Select a valid option!");
 
     }
 }

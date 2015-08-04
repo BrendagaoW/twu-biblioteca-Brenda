@@ -1,13 +1,7 @@
 package com.twu.biblioteca;
 
-import org.mockito.internal.matchers.Null;
-
-import java.awt.print.*;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BibliotecaApp {
 

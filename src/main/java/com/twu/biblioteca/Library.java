@@ -35,4 +35,19 @@ public class Library {
         exception.setExceptionMessage("That book is not available.");
         throw exception;
     }
+
+    public void returnBook(Book book) throws InforException {
+        Book tempBook;
+        for (Book b : booksOutOfLibrary) {
+            if (b.equals(book)) {
+                tempBook = new Book(b);
+                booksOutOfLibrary.remove(b);
+                booksInLibrary.add(tempBook);
+                return;
+            }
+        }
+        InforException exception = new InforException();
+        exception.setExceptionMessage("That is not a valid book to return.");
+        throw exception;
+    }
 }

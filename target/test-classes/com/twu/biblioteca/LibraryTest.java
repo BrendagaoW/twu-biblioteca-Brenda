@@ -45,4 +45,11 @@ public class LibraryTest {
         assertFalse(library.remainContains("1"));
         assertTrue(library.checkoutContains("1"));
     }
+
+    @Test
+    public void testReturnBook() throws Exception {
+        library.returnBook(new Book("3"));
+        assertTrue(library.remainContains("3"));
+        assertFalse(library.checkoutContains("3"));
+    }
 }

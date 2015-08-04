@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.Commands.CheckoutCommand;
 import com.twu.biblioteca.Commands.ListCommand;
 import com.twu.biblioteca.Commands.QuitCommand;
+import com.twu.biblioteca.Commands.ReturnCommand;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,8 +46,12 @@ public class MenuTest {
         Library library = mock(Library.class);
         Command commandCheckout = new CheckoutCommand(printStream, reader, library);
         menu.addCommand("C",commandCheckout);
+        Command commandReturn = new ReturnCommand(printStream, reader, library);
+        menu.addCommand("R", commandReturn);
+
         menu.displayMenu();
         verify(printStream).println("C:Checkout Book");
+        verify(printStream).println("R:Return Book");
     }
 
     @Test

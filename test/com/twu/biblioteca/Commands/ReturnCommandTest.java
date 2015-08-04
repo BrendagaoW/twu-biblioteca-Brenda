@@ -7,20 +7,18 @@ import org.junit.Test;
 
 import java.io.BufferedReader;
 import java.io.PrintStream;
-import java.sql.BatchUpdateException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class CheckoutCommandTest {
+public class ReturnCommandTest {
 
     private PrintStream printStream;
-    private CheckoutCommand checkoutCommand;
+    private ReturnCommand returnCommand;
     private BufferedReader reader;
     private Library library;
 
@@ -39,33 +37,33 @@ public class CheckoutCommandTest {
         outList.add(book3);
         outList.add(book4);
         library = new Library(inList, outList);
-        checkoutCommand = new CheckoutCommand(printStream, reader, library);
+        returnCommand = new ReturnCommand(printStream, reader, library);
     }
 
     @Test
     public void testExecute() throws Exception {
 
 
-        checkoutCommand.execute();
-        verify(printStream).println("Print the book name which you want to checkout:");
+        returnCommand.execute();
+        verify(printStream).println("Print the book name which you want to return:");
 
-        when(reader.readLine()).thenReturn("1");
-        checkoutCommand.execute();
-        assertTrue(library.checkoutContains("1"));
-        assertFalse(library.remainContains("1"));
+        when(reader.readLine()).thenReturn("3");
+        returnCommand.execute();
+        assertTrue(library.remainContains("3"));
+        assertFalse(library.checkoutContains("3"));
     }
 
     @Test
     public void testSuccessful() throws Exception {
-        when(reader.readLine()).thenReturn("1");
-        checkoutCommand.execute();
-        verify(printStream).println("Thank you! Enjoy the book");
+        when(reader.readLine()).thenReturn("3");
+        returnCommand.execute();
+        verify(printStream).println("Thank you for returning the book.");
     }
 
     @Test
     public void testUnsuccessful() throws Exception {
-        when(reader.readLine()).thenReturn("3");
-        checkoutCommand.execute();
-        verify(printStream).println("That book is not available.");
+        when(reader.readLine()).thenReturn("1");
+        returnCommand.execute();
+        verify(printStream).println("That is not a valid book to return.");
     }
 }

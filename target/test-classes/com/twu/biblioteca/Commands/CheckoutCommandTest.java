@@ -47,7 +47,7 @@ public class CheckoutCommandTest {
 
 
         checkoutCommand.execute();
-        verify(printStream).println("Print the book name which you want checkout:");
+        verify(printStream).println("Print the book name which you want to checkout:");
 
         when(reader.readLine()).thenReturn("1");
         checkoutCommand.execute();

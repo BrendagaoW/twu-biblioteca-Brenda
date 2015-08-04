@@ -1,20 +1,36 @@
 package com.twu.biblioteca;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintStream;
-import java.util.List;
+import java.util.Map;
 
 public class Menu {
-    private List<Command> commands;
+    private Map<String, Command> commands;
     private PrintStream printStream;
+    private BufferedReader reader;
 
-    public Menu(List<Command> commands, PrintStream printStream) {
+    public Menu(Map<String, Command> commands, PrintStream printStream, BufferedReader reader) {
         this.commands = commands;
         this.printStream = printStream;
+        this.reader = reader;
     }
 
+
     public void displayMenu() {
-        for (Command command : commands) {
-            printStream.println(command);
+        for (String commandID : commands.keySet()) {
+            printStream.println(commandID + ":" + commands.get(commandID));
+        }
+    }
+
+    public void selectOption() {
+        try {
+            String option = reader.readLine();
+            commands.get(option).execute();
+        } catch (NullPointerException e) {
+            printStream.println("Select a valid option!");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -13,10 +13,12 @@ public class BibliotecaApp {
 
     private PrintStream printStream;
     private BufferedReader reader;
+    private Menu menu;
 
-    public BibliotecaApp(PrintStream printStream, BufferedReader reader) {
+    public BibliotecaApp(PrintStream printStream, BufferedReader reader, Menu menu) {
         this.printStream = printStream;
         this.reader = reader;
+        this.menu = menu;
     }
 
     public BibliotecaApp(PrintStream printStream) {
@@ -29,28 +31,8 @@ public class BibliotecaApp {
 
     public void start() {
         printStream.println("Welcome!");
-
+        menu.displayMenu();
+        menu.selectOption();
     }
-
-    public List<Book> getBookList() {
-        List<Book> bookList = new ArrayList<Book>();
-        bookList.add(new Book("Test-Driven Development", "Kent", 2002));
-        bookList.add(new Book("Code Smell", "Anybody", 2010));
-
-        return bookList;
-    }
-
-    public void showMenu() {
-        printStream.println("List Books");
-
-        try {
-            if ((reader.readLine()) == "l") {
-                printStream.println("Select a valid option!");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
 }

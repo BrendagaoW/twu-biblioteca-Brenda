@@ -19,7 +19,7 @@ public class Menu {
 
     public void displayMenu() {
         for (String commandID : commands.keySet()) {
-            printStream.println(commandID + ":" + commands.get(commandID));
+            printStream.println(commandID + ":" + commands.get(commandID).getOptionName());
         }
     }
 
@@ -32,5 +32,9 @@ public class Menu {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void addCommand(String c, Command command) {
+        commands.put(c, command);
     }
 }

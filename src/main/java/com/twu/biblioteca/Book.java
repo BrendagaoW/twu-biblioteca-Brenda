@@ -16,6 +16,13 @@ public class Book {
         this.year = year;
     }
 
+    public Book(Book book) {
+        this.title = book.title;
+        this.author = book.author;
+        this.year = book.year;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

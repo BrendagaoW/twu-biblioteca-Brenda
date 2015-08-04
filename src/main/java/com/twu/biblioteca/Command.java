@@ -1,14 +1,21 @@
 package com.twu.biblioteca;
 
+import java.io.PrintStream;
+
 public abstract class Command {
     private String optionName;
+    private PrintStream printStream;
 
-    public Command(String optionName) {
+    public Command(String optionName, PrintStream printStream) {
         this.optionName = optionName;
+        this.printStream = printStream;
     }
 
-    @Override
-    public String toString() {
+    public PrintStream getPrintStream() {
+        return printStream;
+    }
+
+    public String getOptionName() {
         return optionName;
     }
 

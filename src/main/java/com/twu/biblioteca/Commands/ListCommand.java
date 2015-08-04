@@ -9,10 +9,8 @@ import java.util.List;
 
 public class ListCommand extends Command {
 
-    private PrintStream printStream;
-
-    public ListCommand() {
-        super("List Books");
+    public ListCommand(PrintStream printStream) {
+        super("List Books", printStream);
     }
 
     @Override
@@ -22,7 +20,7 @@ public class ListCommand extends Command {
         bookList.add(new Book("Code Smell", "Anybody", 2010));
 
         for (Book book : bookList) {
-            printStream.println(book.showDetail());
+            getPrintStream().println(book.showDetail());
         }
     }
 }

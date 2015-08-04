@@ -19,12 +19,14 @@ public class BibliotecaAppTest {
     private PrintStream printStream;
     private BibliotecaApp bibliotecaApp;
     private BufferedReader reader;
+    private Menu menu;
 
     @Before
     public void setUp() throws Exception {
         printStream = mock(PrintStream.class);
         reader = mock(BufferedReader.class);
-        bibliotecaApp = new BibliotecaApp(printStream, reader);
+        menu = mock(Menu.class);
+        bibliotecaApp = new BibliotecaApp(printStream, reader, menu);
     }
 
     @Test
@@ -34,46 +36,16 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldListAllBooks() throws Exception {
-
-        Book book1 = new Book("Test-Driven Development");
-        Book book2 = new Book("Code Smell");
-        Book book3 = new Book("Code Smell~");
-
-        assertEquals(2, bibliotecaApp.getBookList().size());
-        assertThat(bibliotecaApp.getBookList(), hasItem(book1));
-        assertThat(bibliotecaApp.getBookList(), not(hasItem(book3)));
-        assertEquals(book2, bibliotecaApp.getBookList().get(1));
-
-        String detail = "Test-Driven Development" + "\t" + "Kent" + "\t" + "2002";
-        assertEquals(detail, bibliotecaApp.getBookList().get(0).showDetail());
+    public void shouldDisplayMenu() throws Exception {
+        bibliotecaApp.start();
+        verify(menu).displayMenu();
     }
+
 
     @Test
-    public void shouldShowMenu() throws Exception {
-        bibliotecaApp.showMenu();
-        verify(printStream).println("List Books");
+    public void shouldSelectOption() throws Exception {
+        bibliotecaApp.start();
+        verify(menu).selectOption();
     }
 
-    @Test
-    public void shouldShowValidOption() throws Exception {
-        String answerString = "l";
-        when(reader.readLine()).thenReturn(answerString);
-        bibliotecaApp.showMenu();
-        verify(printStream).println("Select a valid option!");
-    }
-
-    @Test
-    public void shouldShowInvalidOption() throws Exception {
-        when(reader.readLine()).thenReturn("k");
-        bibliotecaApp.showMenu();
-        verify(printStream).println("List Books");
-    }
-
-//    @Test
-//    public void testName() throws Exception {
-//        Menu menu = new Menu();
-//
-//
-//    }
 }

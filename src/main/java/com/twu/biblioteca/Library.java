@@ -32,7 +32,7 @@ public class Library {
             }
         }
         InforException exception = new InforException();
-        exception.setExceptionMessage("Please input the right book name!");
+        exception.setExceptionMessage("That book is not available.");
         throw exception;
     }
 }

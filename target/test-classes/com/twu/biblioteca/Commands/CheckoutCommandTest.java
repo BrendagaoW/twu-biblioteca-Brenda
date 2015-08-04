@@ -52,7 +52,20 @@ public class CheckoutCommandTest {
         when(reader.readLine()).thenReturn("1");
         checkoutCommand.execute();
         assertTrue(library.checkoutContains("1"));
-//        assertFalse(library.checkoutContains("1"));
         assertFalse(library.remainContains("1"));
+    }
+
+    @Test
+    public void testSuccessful() throws Exception {
+        when(reader.readLine()).thenReturn("1");
+        checkoutCommand.execute();
+        verify(printStream).println("Thank you! Enjoy the book");
+    }
+
+    @Test
+    public void testUnsuccessful() throws Exception {
+        when(reader.readLine()).thenReturn("3");
+        checkoutCommand.execute();
+        verify(printStream).println("That book is not available.");
     }
 }

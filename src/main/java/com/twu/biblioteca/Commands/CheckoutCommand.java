@@ -27,6 +27,7 @@ public class CheckoutCommand extends Command {
         try {
             String checkoutBook = reader.readLine();
             library.checkout(new Book(checkoutBook));
+            getPrintStream().println("Thank you! Enjoy the book");
         } catch (InforException e) {
             getPrintStream().println(e.getExceptionMessage());
         } catch (IOException e) {

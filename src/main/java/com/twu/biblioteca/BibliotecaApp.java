@@ -15,14 +15,6 @@ public class BibliotecaApp {
         this.menu = menu;
     }
 
-    public BibliotecaApp(PrintStream printStream) {
-        this.printStream = printStream;
-    }
-
-    public static void main(String[] args) {
-        System.out.println("Hello, world!");
-    }
-
     public void start() {
         printStream.println("Welcome!");
         menu.displayMenu();

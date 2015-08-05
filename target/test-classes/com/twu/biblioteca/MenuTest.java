@@ -12,10 +12,7 @@ import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class MenuTest {
 
@@ -45,7 +42,7 @@ public class MenuTest {
 
         Library library = mock(Library.class);
         Command commandCheckout = new CheckoutCommand(printStream, reader, library);
-        menu.addCommand("C",commandCheckout);
+        menu.addCommand("C", commandCheckout);
         Command commandReturn = new ReturnCommand(printStream, reader, library);
         menu.addCommand("R", commandReturn);
 

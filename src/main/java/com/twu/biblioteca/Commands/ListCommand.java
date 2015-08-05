@@ -2,6 +2,7 @@ package com.twu.biblioteca.Commands;
 
 import com.twu.biblioteca.Book;
 import com.twu.biblioteca.Command;
+import com.twu.biblioteca.Library;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -9,17 +10,17 @@ import java.util.List;
 
 public class ListCommand extends Command {
 
-    public ListCommand(PrintStream printStream) {
+    private Library library;
+
+    public ListCommand(PrintStream printStream, Library library) {
         super("List Books", printStream);
+        this.library = library;
     }
 
     @Override
     public void execute() {
-        List<Book> bookList = new ArrayList<Book>();
-        bookList.add(new Book("Test-Driven Development", "Kent", 2002));
-        bookList.add(new Book("Code Smell", "Anybody", 2010));
 
-        for (Book book : bookList) {
+        for (Book book : library.getBooksInLibrary()) {
             getPrintStream().println(book.showDetail());
         }
     }

@@ -2,7 +2,6 @@ package com.twu.biblioteca.Commands;
 
 import com.twu.biblioteca.Book;
 import com.twu.biblioteca.Command;
-import com.twu.biblioteca.InforException;
 import com.twu.biblioteca.Library;
 
 import java.io.BufferedReader;
@@ -28,8 +27,8 @@ public class CheckoutCommand extends Command {
             String checkoutBook = reader.readLine();
             library.checkout(new Book(checkoutBook));
             getPrintStream().println("Thank you! Enjoy the book");
-        } catch (InforException e) {
-            getPrintStream().println(e.getExceptionMessage());
+        } catch (IllegalArgumentException e) {
+            getPrintStream().println(e.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
         }

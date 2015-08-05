@@ -20,7 +20,7 @@ public class Library {
         return booksInLibrary.contains(new Book(remainBook));
     }
 
-    public void checkout(Book book) throws InforException {
+    public void checkout(Book book) throws IllegalArgumentException {
         Book tempBook;
         for (Book b : booksInLibrary) {
             if (b.equals(book)) {
@@ -30,13 +30,13 @@ public class Library {
                 return;
             }
         }
-        InforException exception = new InforException();
-        exception.setExceptionMessage("That book is not available.");
-        throw exception;
+
+        throw new IllegalArgumentException("That book is not available.");
     }
 
-    public void returnBook(Book book) throws InforException {
+    public void returnBook(Book book) throws IllegalArgumentException {
         Book tempBook;
+
         for (Book b : booksOutOfLibrary) {
             if (b.equals(book)) {
                 tempBook = new Book(b);
@@ -45,8 +45,15 @@ public class Library {
                 return;
             }
         }
-        InforException exception = new InforException();
-        exception.setExceptionMessage("That is not a valid book to return.");
-        throw exception;
+
+        throw new IllegalArgumentException("That is not a valid book to return.");
+    }
+
+    public List<Book> getBooksInLibrary() {
+        return booksInLibrary;
+    }
+
+    public List<Book> getBooksOutOfLibrary() {
+        return booksOutOfLibrary;
     }
 }

@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class LibraryTest {
@@ -44,6 +45,13 @@ public class LibraryTest {
         library.checkout(new Book("1"));
         assertFalse(library.remainContains("1"));
         assertTrue(library.checkoutContains("1"));
+
+        try {
+            library.checkout(new Book("4"));
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertThat(e.getMessage(), is("That book is not available."));
+        }
     }
 
     @Test
@@ -51,5 +59,13 @@ public class LibraryTest {
         library.returnBook(new Book("3"));
         assertTrue(library.remainContains("3"));
         assertFalse(library.checkoutContains("3"));
+
+        try {
+            library.returnBook(new Book("1"));
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertEquals("That is not a valid book to return.", e.getMessage());
+        }
     }
+
 }

@@ -10,8 +10,8 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class ReturnCommandTest {
@@ -62,6 +62,7 @@ public class ReturnCommandTest {
     @Test
     public void testUnsuccessful() throws Exception {
         when(reader.readLine()).thenReturn("1");
+
         returnCommand.execute();
         verify(printStream).println("That is not a valid book to return.");
     }

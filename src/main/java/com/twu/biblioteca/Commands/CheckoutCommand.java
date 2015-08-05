@@ -13,8 +13,8 @@ public class CheckoutCommand extends Command {
     private BufferedReader reader;
     private Library library;
 
-    public CheckoutCommand(PrintStream printStream, BufferedReader reader, Library library) {
-        super("Checkout Book", printStream);
+    public CheckoutCommand(String resourceKind, PrintStream printStream, BufferedReader reader, Library library) {
+        super(resourceKind, printStream);
         this.reader = reader;
         this.library = library;
     }

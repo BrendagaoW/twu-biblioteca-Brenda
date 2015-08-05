@@ -1,5 +1,6 @@
 package com.twu.biblioteca.Commands;
 
+import com.twu.biblioteca.Resource;
 import com.twu.biblioteca.Resources.Book;
 import com.twu.biblioteca.Command;
 import com.twu.biblioteca.Library;
@@ -18,7 +19,7 @@ public class ListCommand extends Command {
     @Override
     public void execute() {
 
-        for (Book resource : library.getResourceInLibrary()) {
+        for (Resource resource : library.getResourceInLibrary()) {
             getPrintStream().println(resource.getDetail());
         }
     }

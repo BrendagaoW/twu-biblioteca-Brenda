@@ -6,29 +6,38 @@ import java.util.List;
 
 public class Library {
 
-    private List<Book> resourceInLibrary;
-    private List<Book> resourceOutOfLibrary;
+    private List<Resource> resourceInLibrary;
+    private List<Resource> resourceOutOfLibrary;
 
-    public Library(List<Book> resourceInLibrary, List<Book> resourceOutOfLibrary) {
+    public Library(List<Resource> resourceInLibrary, List<Resource> resourceOutOfLibrary) {
         this.resourceInLibrary = resourceInLibrary;
         this.resourceOutOfLibrary = resourceOutOfLibrary;
     }
 
-    public boolean checkoutContains(String checkoutBook) {
-        return resourceOutOfLibrary.contains(new Book(checkoutBook));
+    public boolean checkoutContains(String checkoutResource) {
+        return resourceOutOfLibrary.contains(new Resource(checkoutResource));
     }
 
     public boolean remainContains(String remainResource) {
-        return resourceInLibrary.contains(new Book(remainResource));
+        return resourceInLibrary.contains(new Resource(remainResource));
     }
 
-    public void checkout(Book resource) throws IllegalArgumentException {
-        Book tempResource;
-        for (Book b : resourceInLibrary) {
-            if (b.equals(resource)) {
-                tempResource = new Book(b);
-                resourceInLibrary.remove(b);
+    public boolean checkoutContains(Resource checkoutResource) {
+        return resourceOutOfLibrary.contains(checkoutResource);
+    }
+
+    public boolean remainContains(Resource remainResource) {
+        return resourceInLibrary.contains(remainResource);
+    }
+
+    public void checkout(Resource resource) throws IllegalArgumentException {
+        Resource tempResource;
+        for (Resource r : resourceInLibrary) {
+            if (r.equals(resource)) {
+                tempResource = new Resource(r);
                 resourceOutOfLibrary.add(tempResource);
+                resourceInLibrary.remove(r);
+
                 return;
             }
         }
@@ -37,12 +46,12 @@ public class Library {
         throw new IllegalArgumentException("That " + resourceClass + " is not available.");
     }
 
-    public void returnResource(Book resource) throws IllegalArgumentException {
-        Book tempResource;
+    public void returnResource(Resource resource) throws IllegalArgumentException {
+        Resource tempResource;
 
-        for (Book b : resourceOutOfLibrary) {
+        for (Resource b : resourceOutOfLibrary) {
             if (b.equals(resource)) {
-                tempResource = new Book(b);
+                tempResource = new Resource(b);
                 resourceOutOfLibrary.remove(b);
                 resourceInLibrary.add(tempResource);
                 return;
@@ -53,11 +62,11 @@ public class Library {
         throw new IllegalArgumentException("That is not a valid " + resourceClass + " to return.");
     }
 
-    public List<Book> getResourceInLibrary() {
+    public List<Resource> getResourceInLibrary() {
         return resourceInLibrary;
     }
 
-    public List<Book> getResourceOutOfLibrary() {
+    public List<Resource> getResourceOutOfLibrary() {
         return resourceOutOfLibrary;
     }
 }

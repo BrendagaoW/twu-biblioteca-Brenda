@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-public abstract class Resource {
+public class Resource {
 
     private String name;
     private int year;
@@ -12,6 +12,11 @@ public abstract class Resource {
     public Resource(String name, int year) {
         this.name = name;
         this.year = year;
+    }
+
+    public Resource(Resource r) {
+        this.name = r.name;
+        this.year = r.year;
     }
 
     @Override
@@ -31,7 +36,9 @@ public abstract class Resource {
         return name.hashCode();
     }
 
-    public abstract String getDetail();
+    public String getDetail(){
+        return null;
+    }
 
     public String getName() {
         return name;

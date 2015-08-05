@@ -17,7 +17,7 @@ public class Movie extends Resource{
     }
 
     public Movie(Movie movie) {
-        super(movie.getName(), movie.getYear());
+        super(movie);
         this.director = movie.director;
         this.rating = movie.rating;
     }

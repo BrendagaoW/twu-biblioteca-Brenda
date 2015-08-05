@@ -14,7 +14,7 @@ public class Book extends com.twu.biblioteca.Resource {
     }
 
     public Book(Book book) {
-        super(book.getName(), book.getYear());
+        super(book);
         this.author = book.author;
     }
 

@@ -16,12 +16,12 @@ public class LibraryTest {
 
     @Before
     public void setUp() throws Exception {
-        Book book1 = new Book("1");
-        Book book2 = new Book("2");
-        Book book3 = new Book("3");
-        Book book4 = new Book("4");
-        List<Book> inList = new ArrayList<Book>();
-        List<Book> outList = new ArrayList<Book>();
+        Resource book1 = new Book("1");
+        Resource book2 = new Book("2");
+        Resource book3 = new Book("3");
+        Resource book4 = new Book("4");
+        List<Resource> inList = new ArrayList<Resource>();
+        List<Resource> outList = new ArrayList<Resource>();
         inList.add(book1);
         inList.add(book2);
         outList.add(book3);
@@ -29,17 +29,6 @@ public class LibraryTest {
         library = new Library(inList, outList);
     }
 
-    @Test
-    public void testCheckoutContains() throws Exception {
-        assertTrue(library.checkoutContains("3"));
-        assertFalse(library.checkoutContains("1"));
-    }
-
-    @Test
-    public void testRemainContains() throws Exception {
-        assertTrue(library.remainContains("1"));
-        assertFalse(library.remainContains("3"));
-    }
 
     @Test
     public void testCheckout() throws Exception {

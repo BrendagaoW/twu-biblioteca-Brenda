@@ -1,8 +1,8 @@
 package com.twu.biblioteca.Commands;
 
-import com.twu.biblioteca.Resources.Book;
 import com.twu.biblioteca.Command;
 import com.twu.biblioteca.Library;
+import com.twu.biblioteca.Resources.Book;
 
 import java.io.BufferedReader;
 import java.io.IOException;

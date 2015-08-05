@@ -41,7 +41,8 @@ public class MenuTest {
     public void shouldDisplayMenu() throws Exception {
 
         Library library = mock(Library.class);
-        Command commandCheckout = new CheckoutCommand("Checkout Book", printStream, reader, library);
+        Login login = mock(Login.class);
+        Command commandCheckout = new CheckoutCommand("Checkout Book", printStream, reader, library, login);
         menu.addCommand("C", commandCheckout);
         Command commandReturn = new ReturnCommand(printStream, reader, library);
         menu.addCommand("R", commandReturn);

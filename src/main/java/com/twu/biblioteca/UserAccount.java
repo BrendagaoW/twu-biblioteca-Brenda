@@ -3,12 +3,14 @@ package com.twu.biblioteca;
 public class UserAccount {
     private String userNumber;
     private String password;
+    private String name;
     private String email;
     private String phoneNumber;
 
-    public UserAccount(String userNumber, String password, String email, String phoneNumber) {
+    public UserAccount(String userNumber, String password, String name, String email, String phoneNumber) {
         this.userNumber = userNumber;
         this.password = password;
+        this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
     }
@@ -20,6 +22,10 @@ public class UserAccount {
 
     public boolean verify(UserAccount user) {
         return this.password.equals(password) && this.userNumber.equals(user.userNumber);
+    }
+
+    public String getDetail() {
+        return name + "\t" + email + "\t" + phoneNumber;
     }
 
     @Override
@@ -38,4 +44,5 @@ public class UserAccount {
     public int hashCode() {
         return userNumber != null ? userNumber.hashCode() : 0;
     }
+
 }

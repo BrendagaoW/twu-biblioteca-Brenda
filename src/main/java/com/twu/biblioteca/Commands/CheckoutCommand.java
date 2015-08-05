@@ -1,6 +1,6 @@
 package com.twu.biblioteca.Commands;
 
-import com.twu.biblioteca.Book;
+import com.twu.biblioteca.Resources.Book;
 import com.twu.biblioteca.Command;
 import com.twu.biblioteca.Library;
 

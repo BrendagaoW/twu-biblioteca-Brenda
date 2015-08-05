@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.Resources.Book;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -56,12 +57,12 @@ public class LibraryTest {
 
     @Test
     public void testReturnBook() throws Exception {
-        library.returnBook(new Book("3"));
+        library.returnResource(new Book("3"));
         assertTrue(library.remainContains("3"));
         assertFalse(library.checkoutContains("3"));
 
         try {
-            library.returnBook(new Book("1"));
+            library.returnResource(new Book("1"));
             fail();
         } catch (IllegalArgumentException e) {
             assertEquals("That is not a valid book to return.", e.getMessage());

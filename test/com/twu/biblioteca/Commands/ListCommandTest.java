@@ -1,6 +1,6 @@
 package com.twu.biblioteca.Commands;
 
-import com.twu.biblioteca.Book;
+import com.twu.biblioteca.Resources.Book;
 import com.twu.biblioteca.Library;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +33,7 @@ public class ListCommandTest {
         library = new Library(inList, outList);
 
         printStream = mock(PrintStream.class);
-        listCommand = new ListCommand(printStream, library);
+        listCommand = new ListCommand("List Books", printStream, library);
 
     }
 

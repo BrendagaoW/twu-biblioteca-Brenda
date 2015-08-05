@@ -1,6 +1,6 @@
 package com.twu.biblioteca.Commands;
 
-import com.twu.biblioteca.Book;
+import com.twu.biblioteca.Resources.Book;
 import com.twu.biblioteca.Command;
 import com.twu.biblioteca.Library;
 
@@ -10,16 +10,16 @@ public class ListCommand extends Command {
 
     private Library library;
 
-    public ListCommand(PrintStream printStream, Library library) {
-        super("List Books", printStream);
+    public ListCommand(String listKinds, PrintStream printStream, Library library) {
+        super(listKinds, printStream);
         this.library = library;
     }
 
     @Override
     public void execute() {
 
-        for (Book book : library.getBooksInLibrary()) {
-            getPrintStream().println(book.getDetail());
+        for (Book resource : library.getResourceInLibrary()) {
+            getPrintStream().println(resource.getDetail());
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.twu.biblioteca.Commands;
 
-import com.twu.biblioteca.Book;
+import com.twu.biblioteca.Resources.Book;
 import com.twu.biblioteca.Command;
 import com.twu.biblioteca.Library;
 
@@ -24,7 +24,7 @@ public class ReturnCommand extends Command {
         getPrintStream().println("Print the book name which you want to return:");
         try {
             String checkoutBook = reader.readLine();
-            library.returnBook(new Book(checkoutBook));
+            library.returnResource(new Book(checkoutBook));
             getPrintStream().println("Thank you for returning the book.");
         } catch (IllegalArgumentException e) {
             getPrintStream().println(e.getMessage());

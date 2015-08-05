@@ -1,59 +1,63 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.Resources.Book;
+
 import java.util.List;
 
 public class Library {
 
-    private List<Book> booksInLibrary;
-    private List<Book> booksOutOfLibrary;
+    private List<Book> resourceInLibrary;
+    private List<Book> resourceOutOfLibrary;
 
-    public Library(List<Book> booksInLibrary, List<Book> booksOutOfLibrary) {
-        this.booksInLibrary = booksInLibrary;
-        this.booksOutOfLibrary = booksOutOfLibrary;
+    public Library(List<Book> resourceInLibrary, List<Book> resourceOutOfLibrary) {
+        this.resourceInLibrary = resourceInLibrary;
+        this.resourceOutOfLibrary = resourceOutOfLibrary;
     }
 
     public boolean checkoutContains(String checkoutBook) {
-        return booksOutOfLibrary.contains(new Book(checkoutBook));
+        return resourceOutOfLibrary.contains(new Book(checkoutBook));
     }
 
-    public boolean remainContains(String remainBook) {
-        return booksInLibrary.contains(new Book(remainBook));
+    public boolean remainContains(String remainResource) {
+        return resourceInLibrary.contains(new Book(remainResource));
     }
 
-    public void checkout(Book book) throws IllegalArgumentException {
-        Book tempBook;
-        for (Book b : booksInLibrary) {
-            if (b.equals(book)) {
-                tempBook = new Book(b);
-                booksInLibrary.remove(b);
-                booksOutOfLibrary.add(tempBook);
+    public void checkout(Book resource) throws IllegalArgumentException {
+        Book tempResource;
+        for (Book b : resourceInLibrary) {
+            if (b.equals(resource)) {
+                tempResource = new Book(b);
+                resourceInLibrary.remove(b);
+                resourceOutOfLibrary.add(tempResource);
                 return;
             }
         }
 
-        throw new IllegalArgumentException("That book is not available.");
+        String resourceClass = resource.getClass().getSimpleName().toLowerCase();
+        throw new IllegalArgumentException("That " + resourceClass + " is not available.");
     }
 
-    public void returnBook(Book book) throws IllegalArgumentException {
-        Book tempBook;
+    public void returnResource(Book resource) throws IllegalArgumentException {
+        Book tempResource;
 
-        for (Book b : booksOutOfLibrary) {
-            if (b.equals(book)) {
-                tempBook = new Book(b);
-                booksOutOfLibrary.remove(b);
-                booksInLibrary.add(tempBook);
+        for (Book b : resourceOutOfLibrary) {
+            if (b.equals(resource)) {
+                tempResource = new Book(b);
+                resourceOutOfLibrary.remove(b);
+                resourceInLibrary.add(tempResource);
                 return;
             }
         }
 
-        throw new IllegalArgumentException("That is not a valid book to return.");
+        String resourceClass = resource.getClass().getSimpleName().toLowerCase();
+        throw new IllegalArgumentException("That is not a valid " + resourceClass + " to return.");
     }
 
-    public List<Book> getBooksInLibrary() {
-        return booksInLibrary;
+    public List<Book> getResourceInLibrary() {
+        return resourceInLibrary;
     }
 
-    public List<Book> getBooksOutOfLibrary() {
-        return booksOutOfLibrary;
+    public List<Book> getResourceOutOfLibrary() {
+        return resourceOutOfLibrary;
     }
 }

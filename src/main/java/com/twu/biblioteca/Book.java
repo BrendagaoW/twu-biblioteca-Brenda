@@ -40,7 +40,7 @@ public class Book {
         return title.hashCode();
     }
 
-    public String showDetail() {
+    public String getDetail() {
         return title + "\t" + author + "\t" + year;
     }
 }

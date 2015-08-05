@@ -46,6 +46,7 @@ public class MenuTest {
         Command commandReturn = new ReturnCommand(printStream, reader, library);
         menu.addCommand("R", commandReturn);
 
+
         menu.displayMenu();
         verify(printStream).println("C:Checkout Book");
         verify(printStream).println("R:Return Book");

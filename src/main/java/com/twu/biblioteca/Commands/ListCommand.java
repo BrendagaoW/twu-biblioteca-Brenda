@@ -5,8 +5,6 @@ import com.twu.biblioteca.Command;
 import com.twu.biblioteca.Library;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ListCommand extends Command {
 
@@ -21,7 +19,7 @@ public class ListCommand extends Command {
     public void execute() {
 
         for (Book book : library.getBooksInLibrary()) {
-            getPrintStream().println(book.showDetail());
+            getPrintStream().println(book.getDetail());
         }
     }
 }

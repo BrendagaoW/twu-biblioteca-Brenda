@@ -47,19 +47,23 @@ public class CheckoutCommandTest {
 
     @Test
     public void testExecute() throws Exception {
-        when(login.login()).thenReturn(mock(UserAccount.class));
-        checkoutCommand.execute();
-        verify(printStream).println("Print the book name which you want to checkout:");
+        Book book = new Book("1");
+        assertTrue(library.remainContains(book));
+        assertFalse(library.checkoutContains(book));
 
+        when(login.getUser()).thenReturn(mock(UserAccount.class));
         when(reader.readLine()).thenReturn("1");
         checkoutCommand.execute();
-        assertTrue(library.checkoutContains("1"));
-        assertFalse(library.remainContains("1"));
+        verify(printStream).println("Print the book name which you want to checkout:");
+        verify(printStream).println("Thank you! Enjoy the book");
+
+        assertTrue(library.checkoutContains(book));
+        assertFalse(library.remainContains(book));
     }
 
     @Test
     public void testSuccessful() throws Exception {
-        when(login.login()).thenReturn(mock(UserAccount.class));
+        when(login.getUser()).thenReturn(mock(UserAccount.class));
         when(reader.readLine()).thenReturn("1");
         checkoutCommand.execute();
         verify(printStream).println("Thank you! Enjoy the book");
@@ -67,7 +71,7 @@ public class CheckoutCommandTest {
 
     @Test
     public void testUnsuccessful() throws Exception {
-        when(login.login()).thenReturn(mock(UserAccount.class));
+        when(login.getUser()).thenReturn(mock(UserAccount.class));
         when(reader.readLine()).thenReturn("3");
         checkoutCommand.execute();
         verify(printStream).println("That book is not available.");

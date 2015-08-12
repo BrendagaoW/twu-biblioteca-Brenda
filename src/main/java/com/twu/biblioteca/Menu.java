@@ -24,14 +24,20 @@ public class Menu {
     }
 
     public void selectOption() {
-        try {
-            String option = reader.readLine();
-            commands.get(option).execute();
-        } catch (NullPointerException e) {
-            printStream.println("Select a valid option!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String option = "";
+        do {
+            try {
+                displayMenu();
+                printStream.println("Please inout your choice:");
+                option = reader.readLine();
+                commands.get(option).execute();
+            } catch (NullPointerException e) {
+                printStream.println("Select a valid option!");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } while (!option.equals("Q"));
+
     }
 
     public void addCommand(String c, Command command) {

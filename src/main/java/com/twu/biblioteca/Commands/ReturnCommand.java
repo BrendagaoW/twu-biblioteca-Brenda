@@ -13,8 +13,8 @@ public class ReturnCommand extends Command {
     private BufferedReader reader;
     private Library library;
 
-    public ReturnCommand(PrintStream printStream, BufferedReader reader, Library library) {
-        super("Return Book", printStream);
+    public ReturnCommand(String sourceKind, PrintStream printStream, BufferedReader reader, Library library) {
+        super(sourceKind, printStream);
         this.reader = reader;
         this.library = library;
     }

@@ -30,12 +30,6 @@ public class BibliotecaAppTest {
         verify(printStream).println("Welcome!");
     }
 
-    @Test
-    public void shouldDisplayMenu() throws Exception {
-        bibliotecaApp.start();
-        verify(menu).displayMenu();
-    }
-
 
     @Test
     public void shouldSelectOption() throws Exception {

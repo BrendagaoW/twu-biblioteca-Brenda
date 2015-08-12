@@ -28,9 +28,6 @@ public class ScanInformationCommandTest {
     @Test
     public void testExecute() throws Exception {
 
-        scanInformationCommand.execute();
-
-
         UserAccount userAccount = new UserAccount("111-2222", "abc", "Brenda", "brendagao.lf@gmail.com", "1111111");
         when(login.login()).thenReturn(userAccount);
 

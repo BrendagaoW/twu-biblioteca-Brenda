@@ -9,11 +9,15 @@ public class Login {
     private List<UserAccount> userAccounts;
     private PrintStream printStream;
     private BufferedReader reader;
+    private boolean isLogin;
+    private UserAccount theUser;
 
     public Login(List<UserAccount> userAccounts, PrintStream printStream, BufferedReader reader) {
         this.userAccounts = userAccounts;
         this.printStream = printStream;
         this.reader = reader;
+        isLogin = false;
+        theUser = null;
     }
 
     public UserAccount login() throws IOException {
@@ -30,10 +34,19 @@ public class Login {
 
         for (UserAccount userAccount : userAccounts) {
             if (userAccount.verify(user)) {
+                isLogin = true;
+                theUser = userAccount;
                 return userAccount;
             }
         }
 
         throw new NullPointerException("Your library number or password is wrong!");
+    }
+
+    public UserAccount getUser() throws IOException {
+        if (isLogin) {
+            return theUser;
+        }
+        return login();
     }
 }

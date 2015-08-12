@@ -20,11 +20,12 @@ public class ScanInformationCommand extends Command {
     @Override
     public void execute() {
         try {
-            if (login.login() == null) {
+            UserAccount userAccount = login.getUser();
+            if (userAccount == null) {
                 getPrintStream().println("Please login!");
                 return;
             }
-            getPrintStream().println("Print the book name which you want to checkout:");
+            getPrintStream().println(userAccount.getDetail());
 
         } catch (NullPointerException e) {
             getPrintStream().println(e.getMessage());

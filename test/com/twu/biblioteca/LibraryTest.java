@@ -29,12 +29,24 @@ public class LibraryTest {
         library = new Library(inList, outList);
     }
 
+    @Test
+    public void testContains() throws Exception {
+        Resource book1 = new Book("1");
+        Resource book3 = new Book("3");
+
+        assertFalse(library.checkoutContains(book1));
+        assertTrue(library.remainContains(book1));
+        assertFalse(library.remainContains(book3));
+        assertTrue(library.checkoutContains(book3));
+
+    }
 
     @Test
     public void testCheckout() throws Exception {
-        library.checkout(new Book("1"));
-        assertFalse(library.remainContains("1"));
-        assertTrue(library.checkoutContains("1"));
+        Book book = new Book("1");
+        library.checkout(book);
+        assertFalse(library.remainContains(book));
+        assertTrue(library.checkoutContains(book));
 
         try {
             library.checkout(new Book("4"));
@@ -46,9 +58,10 @@ public class LibraryTest {
 
     @Test
     public void testReturnBook() throws Exception {
-        library.returnResource(new Book("3"));
-        assertTrue(library.remainContains("3"));
-        assertFalse(library.checkoutContains("3"));
+        Book book = new Book("3");
+        library.returnResource(book);
+        assertTrue(library.remainContains(book));
+        assertFalse(library.checkoutContains(book));
 
         try {
             library.returnResource(new Book("1"));
@@ -58,4 +71,18 @@ public class LibraryTest {
         }
     }
 
+    @Test
+    public void testCheckoutAndReturn() throws Exception {
+
+        Book book = new Book("1");
+        assertTrue(library.remainContains(book));
+        assertFalse(library.checkoutContains(book));
+        library.checkout(book);
+        assertFalse(library.remainContains(book));
+        assertTrue(library.checkoutContains(book));
+        library.returnResource(book);
+        assertTrue(library.remainContains(book));
+        assertFalse(library.checkoutContains(book));
+
+    }
 }

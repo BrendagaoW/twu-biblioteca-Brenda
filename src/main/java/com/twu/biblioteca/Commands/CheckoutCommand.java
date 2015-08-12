@@ -26,7 +26,7 @@ public class CheckoutCommand extends Command {
     public void execute() {
 
         try {
-            if (login.login() == null) {
+            if (login.getUser() == null) {
                 getPrintStream().println("Please login!");
                 return;
             }

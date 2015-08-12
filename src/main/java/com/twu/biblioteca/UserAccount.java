@@ -21,7 +21,7 @@ public class UserAccount {
     }
 
     public boolean verify(UserAccount user) {
-        return this.password.equals(password) && this.userNumber.equals(user.userNumber);
+        return this.password.equals(user.password) && this.userNumber.equals(user.userNumber);
     }
 
     public String getDetail() {

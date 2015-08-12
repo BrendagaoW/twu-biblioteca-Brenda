@@ -37,20 +37,21 @@ public class ReturnCommandTest {
         outList.add(book3);
         outList.add(book4);
         library = new Library(inList, outList);
-        returnCommand = new ReturnCommand(printStream, reader, library);
+        returnCommand = new ReturnCommand("Return Books", printStream, reader, library);
     }
 
     @Test
     public void testExecute() throws Exception {
 
-
+        Book book = new Book("3");
+        when(reader.readLine()).thenReturn("3");
         returnCommand.execute();
         verify(printStream).println("Print the book name which you want to return:");
 
-        when(reader.readLine()).thenReturn("3");
-        returnCommand.execute();
-        assertTrue(library.remainContains("3"));
-        assertFalse(library.checkoutContains("3"));
+        verify(printStream).println("Thank you for returning the book.");
+
+        assertTrue(library.remainContains(book));
+        assertFalse(library.checkoutContains(book));
     }
 
     @Test

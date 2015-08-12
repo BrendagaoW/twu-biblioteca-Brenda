@@ -2,7 +2,7 @@ package com.twu.biblioteca.Resources;
 
 import com.twu.biblioteca.Resource;
 
-public class Movie extends Resource{
+public class Movie extends Resource {
     private String director;
     private int rating;
 

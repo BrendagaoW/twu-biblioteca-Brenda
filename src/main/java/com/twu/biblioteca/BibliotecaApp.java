@@ -24,12 +24,7 @@ public class BibliotecaApp {
         this.menu = menu;
     }
 
-    public void start() {
-        printStream.println("Welcome!");
-        menu.selectOption();
-    }
-
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         PrintStream printStream = System.out;
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Menu menu = getMenu(printStream, reader);
@@ -104,6 +99,11 @@ public class BibliotecaApp {
         userAccounts.add(user2);
         userAccounts.add(user3);
         return userAccounts;
+    }
+
+    public void start() {
+        printStream.println("Welcome!");
+        menu.selectOption();
     }
 
 }

@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-public class Resource {
+public abstract class Resource {
 
     private String name;
     private int year;
@@ -36,9 +36,7 @@ public class Resource {
         return name.hashCode();
     }
 
-    public String getDetail(){
-        return null;
-    }
+    public abstract String getDetail();
 
     public String getName() {
         return name;
